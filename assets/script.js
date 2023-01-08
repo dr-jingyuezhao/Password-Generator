@@ -10,7 +10,7 @@ var uppercaseCharacters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"
 var numericCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 // Array of special characters to be included in password
-var specialCharacters = ["@", "%", "+", "\\", "/", "'", "!", "#", "$", "£", "^", "?", ":", ",", ".", ")", "(", "}", "{", "]", "[", "~", "-", "_"];
+var specialCharacters = ["@", "%", "&", "*", "/", "'", "!", "#", "$", "£", "^", "?", ":", ",", ".", ")", "(", "}", "{", "]", "[", "~", "+", "-", "_"];
 
 // Variables declaration
 var passwordLength = 0;
