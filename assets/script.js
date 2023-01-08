@@ -18,21 +18,19 @@ var confirmLowercase;
 var confirmUppercase;
 var confirmNumber;
 var confirmSpecial;
-var passwordChar = [];
-var randomPassword = "";
+
 
 // define the passwordOptions object
 var passwordOptions = {
   // property: password length
   lengthPrompt: function () {
     passwordLength = prompt("Please choose the length of your password: enter a number between 10 and 64.");
-    if (passwordLength < 10 || passwordLength > 64) {
+    while (passwordLength < 10 || passwordLength > 64) {
       alert("Password length must be at least 10 but no more than 64 characters.");
       console.log("The input for password length " + passwordLength + " is invalid.");
       passwordLength = prompt("Please try again and enter a number between 10 and 64.");
-    } else {
-      alert("Your password will have " + passwordLength + " characters.");
     }
+    alert("Your password will have " + passwordLength + " characters.");
     console.log("Your password length is: ", passwordLength);
     return passwordLength;
   },
@@ -62,9 +60,7 @@ var passwordOptions = {
   },
 };
 
-// console.log("Your password options are: ", passwordOptions);
-// console.log(Object.entries(passwordOptions));
-
+// Function for confirming the selected character types
 function selectCharType() {
   // prompt the user confirming lowercase character to be included in the password
   passwordOptions.hasLowercase();
@@ -84,19 +80,45 @@ function getPasswordOptions() {
 }
 
 // Function for getting a random element from an array
-function getRandom(arr) { }
+function getRandomPwd() {
+  // declare passwordChar to be an empay array
+  var passwordChar = [];
+
+  if (confirmLowercase) {
+    passwordChar = passwordChar.concat(lowercaseCharacters);
+  }
+
+  if (confirmUppercase) {
+    passwordChar = passwordChar.concat(uppercaseCharacters);
+  }
+
+  if (confirmNumber) {
+    passwordChar = passwordChar.concat(numericCharacters);
+  }
+
+  if (confirmSpecial) {
+    passwordChar = passwordChar.concat(specialCharacters);
+  }
+  // declare randomPassword to be an empty string
+  var randomPassword = "";
+  // to get a random item from the passwordChar array for the selected password length
+  for (var i = 0; i < passwordLength; i++) {
+    randomPassword = randomPassword + passwordChar[Math.floor(Math.random() * passwordChar.length)];
+  }
+  console.log(randomPassword);
+}
 
 // Function to generate password with user input
 function generatePassword() {
-  var userInput = getPasswordOptions();
+  getPasswordOptions();
   while (confirmLowercase === false && confirmUppercase === false && confirmNumber === false && confirmSpecial === false) {
     alert("Your password must include at least one character type. Please try again and select the character types.");
     selectCharType();
   }
   alert("Your password will be generated based on your selection criteria.");
   //Assign random characters to create password based on the selection criteria
-
-  return "This is a secret password.";
+  getRandomPwd();
+  return randomPassword
 }
 
 // Get references to the #generate element
