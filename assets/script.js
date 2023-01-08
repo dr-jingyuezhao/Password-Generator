@@ -162,13 +162,16 @@ function getPasswordOptions() {
 }
 
 // call the function to get password options
-var userInput = getPasswordOptions();
+// var userInput = getPasswordOptions();
 
 // Function for getting a random element from an array
 function getRandom(arr) {}
 
 // Function to generate password with user input
-function generatePassword() {}
+function generatePassword() {
+  alert("Called this function!!!");
+  return "This is a secret password."
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
