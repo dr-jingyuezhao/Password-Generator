@@ -79,11 +79,19 @@ function getPasswordOptions() {
   selectCharType();
 }
 
-// Function for getting a random element from an array
-function getRandomPwd() {
+// Function to generate password with user input
+function generatePassword() {
+  getPasswordOptions();
+  while (confirmLowercase === false && confirmUppercase === false && confirmNumber === false && confirmSpecial === false) {
+    alert("Your password must include at least one character type. Please try again and select the character types.");
+    selectCharType();
+  }
+  alert("Your password will be generated based on your selection criteria.");
+
+  //Assign random characters to create password based on the selection criteria
   // declare passwordChar to be an empay array
   var passwordChar = [];
-
+  // checking the criteria for selected character types
   if (confirmLowercase) {
     passwordChar = passwordChar.concat(lowercaseCharacters);
   }
@@ -106,18 +114,6 @@ function getRandomPwd() {
     randomPassword = randomPassword + passwordChar[Math.floor(Math.random() * passwordChar.length)];
   }
   console.log(randomPassword);
-}
-
-// Function to generate password with user input
-function generatePassword() {
-  getPasswordOptions();
-  while (confirmLowercase === false && confirmUppercase === false && confirmNumber === false && confirmSpecial === false) {
-    alert("Your password must include at least one character type. Please try again and select the character types.");
-    selectCharType();
-  }
-  alert("Your password will be generated based on your selection criteria.");
-  //Assign random characters to create password based on the selection criteria
-  getRandomPwd();
   return randomPassword
 }
 
