@@ -1,35 +1,5 @@
 // The Password generator will create a random password with 10-64 characters based on criteria the user specifies.
 
-// Array of special characters to be included in password
-var specialCharacters = [
-  "@",
-  "%",
-  "+",
-  "\\",
-  "/",
-  "'",
-  "!",
-  "#",
-  "$",
-  "^",
-  "?",
-  ":",
-  ",",
-  ")",
-  "(",
-  "}",
-  "{",
-  "]",
-  "[",
-  "~",
-  "-",
-  "_",
-  ".",
-];
-
-// Array of numeric characters to be included in password
-var numericCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-
 // Array of lowercase characters to be included in password
 var lowercaseCharacters = [
   "a",
@@ -89,6 +59,37 @@ var uppercaseCharacters = [
   "Y",
   "Z",
 ];
+
+// Array of numeric characters to be included in password
+var numericCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+// Array of special characters to be included in password
+var specialCharacters = [
+  "@",
+  "%",
+  "+",
+  "\\",
+  "/",
+  "'",
+  "!",
+  "#",
+  "$",
+  "^",
+  "?",
+  ":",
+  ",",
+  ")",
+  "(",
+  "}",
+  "{",
+  "]",
+  "[",
+  "~",
+  "-",
+  "_",
+  ".",
+];
+
 
 // Variables declaration
 var passwordLength = 0;
