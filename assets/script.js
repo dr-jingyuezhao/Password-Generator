@@ -93,72 +93,74 @@ var specialCharacters = [
 
 // Variables declaration
 var passwordLength = 0;
+var lowercase = lowercaseCharacters;
+var uppercase = uppercaseCharacters;
+var number = numericCharacters;
+var special = specialCharacters;
+
 
 
 // define the passwordOptions object
 var passwordOptions = {
-  // properties are made up of key-value pairs
-  length: passwordLength,
+  // property: password length
+  lengthPrompt: function() {
+    passwordLength = prompt(
+      "Please choose the length of your password: enter a number between 10 and 64."
+    );
+    if (passwordLength < 10 || passwordLength > 64) {
+      alert(
+        "Password length must be at least 10 but no more than 64 characters."
+      );
+      console.log("The input for password length " + passwordLength + " is invalid.");
+      passwordLength = prompt("Please try again and enter a number between 10 and 64.");
+    } else {
+      alert("Your password will have " + passwordLength + " characters.");
+    }
+    console.log("Your password length is: ", passwordLength);
+    return passwordLength
+  },
+  // property: password has lowercase or not
   hasLowercase: function() {
-    confirm("Please confirm OK if you would like to have lowercase in your password.");
-    return;
+    lowercase = confirm("Please click OK to confirm including lowercase characters in your password.");
+    console.log("Your password has lowercase characters: ", lowercase);
+    return lowercase
   },
-  lowercase: lowercaseCharacters,
+  // property: password has uppercase or not
   hasUppercase: function() {
-    confirm("Please confirm OK if you would like to have uppercase in your password.");
+    uppercase = confirm("Please click OK to confirm including uppercase characters in your password.");
+    console.log("Your password has uppercase characters: ", uppercase);
+    return uppercase
   },
-  uppercase: uppercaseCharacters,
+  // property: password has number or not
   hasNumber: function() {
-    confirm("Please confirm OK if you would like to have number in your password.");
+    number = confirm("Please click OK to confirm including numeric characters in your password.");
+    console.log("Your password has numeric characters: ", number);
+    return number
   },
-  number: numericCharacters,
+  // property: password has special characters or not
   hasSpecial: function() {
-    confirm("Please confirm OK if you would like to have special characters in your password.");
+    special = confirm("Please click OK to confirm including special characters in your password.");
+    console.log("Your password has special characters: ", special);
+    return special
   },
-  special: specialCharacters,
 };
 
 // console.log("Your password options are: ", passwordOptions);
 // console.log(Object.entries(passwordOptions));
 
-//Functions for
-function lengthMessage() {
-  if (passwordLength < 10 || passwordLength > 64) {
-    alert(
-      "Password length must be at least 10 characters but no more than 64."
-    );
-    console.log(
-      "The number of password length " + passwordLength + " is invalid."
-    );
-    passwordLength = prompt("Please try again and enter a number between 10 and 64.");
-  } else {
-    alert("Your password will have " + passwordLength + " characters.");
-  }
-  console.log("Your password length is: " + passwordLength);
-}
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-  // prompt the user for the length of password
-  passwordLength = prompt(
-    "Please choose the length of your password: enter a number between 10 and 64."
-  );
-  // alert if the password length is <10 or >64
-  lengthMessage();
-
-  // prompt the user for character types to be included in the password
-  
-  // prompt the user for lowercase character to be included in the password
+  // prompt the user for the password length
+  passwordOptions.lengthPrompt();
+  // prompt the user confirming lowercase character to be included in the password
   passwordOptions.hasLowercase();
-  console.log("Your password has lowercase: ", passwordOptions.hasLowercase());
-  // return hasLowercase;
-  // prompt the user for uppercase character to be included in the password
+  // prompt the user confirming uppercase character to be included in the password
   passwordOptions.hasUppercase();
-  // return hasUppercase;
+  // prompt the user confirming numeric character to be included in the password
   passwordOptions.hasNumber();
+  // prompt the user confirming special character to be included in the password
   passwordOptions.hasSpecial();
-
-
 }
 
 // call the function to get password options
@@ -169,6 +171,7 @@ function getRandom(arr) {}
 
 // Function to generate password with user input
 function generatePassword() {
+  var userInput = getPasswordOptions();
   alert("Called this function!!!");
   return "This is a secret password."
 }
